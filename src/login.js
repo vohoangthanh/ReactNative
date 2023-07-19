@@ -17,15 +17,15 @@ const Login = () => {
       <View style={styles.top}></View>
       <View style={styles.bottom}>
         <View style={styles.bottomview2}>
-          <Image style={styles.anhmonan} source={require('../src/media/anh.png')} />
+          <Image style={styles.anhmonan} source={require('../media/anh.png')} />
         </View>
         <Text style={styles.text}>MyFPL</Text>
         <View style={styles.textinputuser}>
-          <Image style={styles.anh2} source={require('../src/media/user.png')} />
+          <Image style={styles.anh2} source={require('../media/user.png')} />
           <TextInput value={username} onChangeText={setUsername} style={styles.textinput} placeholder='Username'></TextInput>
         </View>
         <View style={styles.textinputuser2}>
-          <Image style={styles.anh2} source={require('../src/media/pass.png')} />
+          <Image style={styles.anh2} source={require('../media/pass.png')} />
           <TextInput secureTextEntry={true} value={password} onChangeText={setPassword} style={styles.textinput} placeholder='Password'></TextInput>
         </View>
         <Pressable style={styles.button} onPress={handleLogin}>
