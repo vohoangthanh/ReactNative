@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import type { PropsWithChildren } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,20 +16,15 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import Index from './src/Index';
 import Menu from './src/Menu';
-import Lichthi from './src/Lichthi';
-
-
 
 function App(): JSX.Element {
 
 
   return (
-    <SafeAreaView>
-      <View>
-    <Menu/>
-      </View>
-      
+    <SafeAreaView style={{flex:1}}>
+     <Index/>
     </SafeAreaView>
   );
 }

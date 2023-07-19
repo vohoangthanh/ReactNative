@@ -1,7 +1,11 @@
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView, onPress,Pressable } from 'react-native'
 import React from 'react'
 
-const Menu = () => {
+const Menu = (props) => {
+    const {navigation} = props
+    const handleLogin = () => {
+        navigation.navigate('Lichthi')
+    }
     return (
         <View style={styles.item}>
             <View style={styles.logotitle}>
@@ -10,13 +14,13 @@ const Menu = () => {
             </View>
             <ScrollView style={styles.scrool} >
                 <View style={styles.menu}>
-                    <View style={styles.itemcon}>
+                    <Pressable style={styles.itemcon} onPress = {handleLogin}>
                         <Image style={styles.itemcon1} source={require('../media/lichhoc.png')} />
-                        <Text style={styles.txtlichhoc}>Lịch học</Text>
-                    </View>
+                        <Text style={styles.txtlichhoc}>Lịch Thi</Text>
+                    </Pressable>
                     <View style={styles.itemcon}>
                         <Image style={styles.itemcon1} source={require('../media/lichthi.png')} />
-                        <Text style={styles.txtlichhoc}>Lịch thi</Text>
+                        <Text style={styles.txtlichhoc}>Lịch Học</Text>
                     </View>
                 </View>
                 <View style={styles.menu}>
