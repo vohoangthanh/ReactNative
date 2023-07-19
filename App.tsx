@@ -26,7 +26,7 @@ function App(): JSX.Element {
   return (
     <SafeAreaView>
       <View>
-        <Text>123</Text>
+        <Text>123223</Text>
       </View>
       
          
