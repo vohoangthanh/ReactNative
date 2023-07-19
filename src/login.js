@@ -7,7 +7,7 @@ const Login = () => {
   const handleLogin = () => {
       if (username === 'fpoly' && password === '123') {
           Alert.alert('Login Sucessfuly!');
-          // navigation.navigate('List'); lỗi tè le
+          // navigation.navigate('List'); lỗi tè le 1
       } else {
           Alert.alert('Login Failed!');
       }
