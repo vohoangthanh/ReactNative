@@ -4,7 +4,7 @@ import React from 'react'
 const Lichthi = () => {
   return (
     <View>
-      <Text>Lichthi</Text>
+      <Text>LCoong</Text>
     </View>
   )
 }
