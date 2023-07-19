@@ -5,6 +5,7 @@ const test = () => {
   return (
     <View>
       <Text>test</Text>
+      <Text>te2st</Text>
     </View>
   )
 }
