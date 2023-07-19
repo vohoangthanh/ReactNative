@@ -16,9 +16,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
-
-
+import Menu from './src/Menu';
+import Lichthi from './src/Lichthi';
 
 function App(): JSX.Element {
 
@@ -26,14 +25,11 @@ function App(): JSX.Element {
   return (
     <SafeAreaView>
       <View>
-        <Text>123223</Text>
+       <Lichthi/>
       </View>
       
-         
     </SafeAreaView>
   );
 }
-
-
 
 export default App;
