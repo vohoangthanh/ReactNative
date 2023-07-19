@@ -23,7 +23,6 @@ function App(): JSX.Element {
   return (
     <SafeAreaView>
       <View>
-        <Text>thêm src</Text>
       </View>
       
     </SafeAreaView>
