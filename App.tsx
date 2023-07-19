@@ -23,7 +23,7 @@ function App(): JSX.Element {
   return (
     <SafeAreaView>
       <View>
-        <Text>Test</Text>
+        <Text>Test1</Text>
       </View>
       
     </SafeAreaView>
