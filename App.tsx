@@ -19,13 +19,15 @@ import {
 import Menu from './src/Menu';
 import Lichthi from './src/Lichthi';
 
+
+
 function App(): JSX.Element {
 
 
   return (
     <SafeAreaView>
       <View>
-       <Lichthi/>
+    <Menu/>
       </View>
       
     </SafeAreaView>
