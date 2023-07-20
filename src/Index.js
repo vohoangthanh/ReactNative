@@ -6,18 +6,22 @@ import { AppRegistry } from 'react-native';
 import Login from './Login'
 import Menu from './Menu'
 import Lichthi from './Lichthi'
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+//tạo hàm tab
+const Tab = createBottomTabNavigator();
 const Index = () => {
 
   
   return (
    <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-      <Stack.Screen name="Menu" component={Menu} options={{headerShown: false}}/>
-      <Stack.Screen name="Lichthi" component={Lichthi} options={{headerShown: false}}/>
+    <Tab.Navigator>
+      <Tab.Screen name="Login" component={Login} options={{headerShown: false}}/>
+      <Tab.Screen name="Menu" component={Menu} options={{headerShown: false}}/>
+      <Tab.Screen name="Lichthi" component={Lichthi} options={{headerShown: false}}/>
      
-    </Stack.Navigator>
+    </Tab.Navigator>
+    
    </NavigationContainer>
   )
 }
