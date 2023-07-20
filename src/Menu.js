@@ -6,6 +6,10 @@ const Menu = (props) => {
     const handleLogin = () => {
         navigation.navigate('Lichthi')
     }
+    const handleLogin2 = () => {
+        navigation.navigate('TinTuc')
+    }
+    
     return (
         <View style={styles.item}>
             <View style={styles.logotitle}>
@@ -68,10 +72,10 @@ const Menu = (props) => {
                     </View>
                 </View>
                 <View style={styles.menu}>
-                    <View style={styles.itemcon}>
+                    <Pressable style={styles.itemcon} onPress = {handleLogin2}>
                         <Image style={styles.itemcon1} source={require('../media/news.png')} />
                         <Text style={styles.txtlichhoc}>Tin tức</Text>
-                    </View>
+                    </Pressable>
                     <View style={styles.itemcon}>
                         <Image style={styles.itemcon1} source={require('../media/lichhoc.png')} />
                         <Text style={styles.txtlichhoc}>Hoá đơn</Text>

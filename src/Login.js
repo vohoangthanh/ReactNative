@@ -3,8 +3,8 @@ import React, { useState }  from 'react'
 
 const Login = (props) => {
   const {navigation} = props
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('fpoly');
+  const [password, setPassword] = useState('123');
   const handleLogin = () => {
       if (username === 'fpoly' && password === '123') {
         navigation.navigate('Menu')
