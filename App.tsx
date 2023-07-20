@@ -24,7 +24,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={{flex:1}}>
-     <Index/>
+     <Menu/>
     </SafeAreaView>
   );
 }
