@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
    
     scrool: {
       
-        width: '100%',
+        width: '95%',
         height: '90%',
     },
 
