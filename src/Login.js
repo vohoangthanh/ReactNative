@@ -29,7 +29,7 @@ const Login = (props) => {
       </Text>
       <View >
         <TextInput value={username} onChangeText={setUsername} style={styles.textEmail} ></TextInput>
-        <Text style={styles.txtUser}>thanhvhps27337@fpt.edu.vn</Text>
+        
       </View>
       <Text style={styles.txtEmail}>Password</Text>
 
