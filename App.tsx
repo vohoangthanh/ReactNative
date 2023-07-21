@@ -24,6 +24,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={{flex:1}}>
+      {/* nhánh main */}
      <Index/>
     </SafeAreaView>
   );
