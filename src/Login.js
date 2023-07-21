@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 
 const Login = (props) => {
   const { navigation } = props
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('fpoly');
+  const [password, setPassword] = useState('123');
   const handleLogin = () => {
-    if (username === 'thanhvhps27337@fpt.edu.vn' && password === '123') {
+    if (username === 'fpoly' && password === '123') {
       navigation.navigate('Menu')
     } else {
       Alert.alert('Login Failed!');
@@ -29,7 +29,7 @@ const Login = (props) => {
       </Text>
       <View >
         <TextInput value={username} onChangeText={setUsername} style={styles.textEmail} ></TextInput>
-        <Text style={styles.txtUser}>thanhvhps27337@fpt.edu.vn</Text>
+        
       </View>
       <Text style={styles.txtEmail}>Password</Text>
 
