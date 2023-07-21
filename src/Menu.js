@@ -13,7 +13,7 @@ const Menu = (props) => {
     return (
         <View style={styles.item}>
             <View style={styles.logotitle1}>
-                <Image style={styles.logo} source={require('../media/logo1.png')} />
+                <Image style={styles.logo} source={require('../media/logo.png')} />
                 <Image style={styles.more1} source={require('../media/more.png')} />
             </View>
             <View style={styles.logotitle}>
@@ -110,21 +110,21 @@ export default Menu
 const styles = StyleSheet.create({
     more1: {
         width: '5%',
-        height: '70%',
+        height: '50%',
         left: '-30%'
     },
     logotitle1: {
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        backgroundColor: '#f27321',
+      
         width: '100%',
         height: '7%',
     },
     logo: {
         left: '10%',
-        width: '10%',
-        height: '100%',
+        width: '42%',
+        height: 55,
     },
 
     title2: {
@@ -215,7 +215,8 @@ const styles = StyleSheet.create({
     item: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#f5f5f5'
+        backgroundColor: '#f5f5f5',
+        padding:5
     },
 
     logotitle: {
