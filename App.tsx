@@ -18,6 +18,8 @@ import {
 } from 'react-native';
 import Index from './src/Index';
 import Menu from './src/Menu';
+import Login from './src/Login';
+import Lichthi from './src/Lichthi';
 
 function App(): JSX.Element {
 

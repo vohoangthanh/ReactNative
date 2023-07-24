@@ -1,37 +1,58 @@
 import { StyleSheet, Text, View, Image, TextInput, Pressable, Alert } from 'react-native'
-import React, { useState }  from 'react'
+import React, { useState } from 'react'
 
 const Login = (props) => {
-  const {navigation} = props
+  const { navigation } = props
   const [username, setUsername] = useState('fpoly');
   const [password, setPassword] = useState('123');
   const handleLogin = () => {
-      if (username === 'fpoly' && password === '123') {
-        navigation.navigate('Menu')
-      } else {
-          Alert.alert('Login Failed!');
-      }
+    if (username === 'fpoly' && password === '123') {
+      navigation.navigate('Menu')
+    } else {
+      Alert.alert('Login Failed!');
+    }
   };
   return (
     <View style={styles.body}>
-      <View style={styles.top}></View>
-      <View style={styles.bottom}>
-        <View style={styles.bottomview2}>
-          <Image style={styles.anhmonan} source={require('../media/anh.png')} />
-        </View>
-        <Text style={styles.text}>MyFPL</Text>
-        <View style={styles.textinputuser}>
-          <Image style={styles.anh2} source={require('../media/user.png')} />
-          <TextInput value={username} onChangeText={setUsername} style={styles.textinput} placeholder='Username'></TextInput>
-        </View>
-        <View style={styles.textinputuser2}>
-          <Image style={styles.anh2} source={require('../media/pass.png')} />
-          <TextInput secureTextEntry={true} value={password} onChangeText={setPassword} style={styles.textinput} placeholder='Password'></TextInput>
-        </View>
-        <Pressable style={styles.button} onPress={handleLogin}>
-        <Text style={styles.text2}>Login</Text>
+      <Image style={styles.imgbacgroud} source={require('../media/goc.png')} />
+      <Image style={styles.imggoc2} source={require('../media/goc2.png')} />
+      <Image style={styles.imggoc3} source={require('../media/goc3.png')} />
+      <View style={styles.contai}>
+        <Image style={styles.logo} source={require('../media/logo.png')} />
+      </View>
+      <View style={styles.cotaiCS}>
+        <TextInput style={styles.txtCS} > </TextInput>
+        <Text style={styles.txtChon}>Lựa chọn cơ sở</Text>
+      </View>
+      <Text style={styles.txtEmail}>
+        E-mail
+      </Text>
+      <View >
+        <TextInput value={username} onChangeText={setUsername} style={styles.textEmail} ></TextInput>
+        
+      </View>
+      <Text style={styles.txtEmail}>Password</Text>
+
+      <TextInput secureTextEntry={true} value={password} onChangeText={setPassword} style={styles.textEmail} ></TextInput>
+
+      <Pressable style={styles.pres} onPress={handleLogin}>
+        <Text style={styles.txtLogin}>Login</Text>
+      </Pressable>
+
+      <View style={styles.contaiSi}>
+        <View style={styles.vien} />
+        <Text style={styles.txtSigin}>Sigin up with</Text>
+      </View>
+      <View style={styles.contaiwith}>
+        <Pressable style={styles.presGoo} onPress={handleLogin}>
+          <Image style={styles.anh1} source={require('../media/gg.png')} />
+          <Text style={styles.txtgg}>Login</Text>
         </Pressable>
-        <Text style={styles.text3}>Forgot your password?</Text>
+        <Pressable style={styles.presGoo} onPress={handleLogin}>
+          <Image style={styles.anh1} source={require('../media/fb.png')} />
+
+          <Text style={styles.txtgg}>Facebook</Text>
+        </Pressable>
       </View>
     </View>
   )
@@ -44,81 +65,132 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     width: '100%',
     height: '100%',
-    alignItems: 'center',
+    padding: 25,
   },
-  bottom: {
-    borderRadius: 450,
-    width: '200%',
-    height: '200%',
-    alignItems: 'center',
-    backgroundColor: '#feb02a'
+  imgbacgroud: {
+    position: 'absolute',
+    right: 0.5,
+    zIndex: -1,
+
   },
-  top: {
-    width: '100%',
-    height: '26%',
+  imggoc2: {
+    position: 'absolute',
+    zIndex: -1,
   },
-  anhmonan: {
-    top: '5%',
-    borderRadius: 50,
-    width: '85%',
-    height: '85%',
+  contai: {
+    position: 'absolute',
+    marginTop: 70,
+    marginLeft: 60,
   },
-  bottomview2: {
-    alignItems: "center",
-    backgroundColor: '#AAEEFF',
-    borderRadius: 50,
-    width: '20%',
-    height: '11%',
-    top: '-5.5%'
+  imggoc3: {
+    position: 'absolute',
+    zIndex: -2,
   },
-  text: {
-    color: '#7C85FF',
-    fontFamily: 'Yu Gothic UI',
-    fontStyle: 'normal',
+  logo: {
+    position: 'absolute',
+    width: 260,
+    height: 90,
+  },
+  txtMy: {
+    marginTop: 60,
     fontSize: 36,
-    top: '-2%',
+    color: "#000000",
+    fontFamily: "Serif"
+
+  }, cotaiCS: {
+    marginTop: 170,
   },
-  textinputuser: {
-    backgroundColor: 'white',
-    borderRadius: 16,
-    width: '41%',
-    height: '3.5%',
-    flexDirection: 'row',
-    alignItems: 'center',
+  txtCS: {
+    borderWidth: 1,
+    borderColor: "#FE724C",
+    borderRadius: 10,
+    height: 60,
   },
-  anh2: {
-    marginLeft: '2%',
-    marginRight: '7%',
+  txtChon: {
+    position: 'absolute',
+    marginLeft: 85,
+    marginTop: 15,
+    fontSize: 23,
+    color: "#000000",
+    fontFamily: "Serif",
+
   },
-  textinputuser2: {
-    backgroundColor: 'white',
-    borderRadius: 16,
-    width: '41%',
-    height: '3.5%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: '5%',
-    marginBottom: '5%',
+  txtEmail: {
+    fontSize: 17,
+    fontFamily: "Serif",
+    marginTop: 25,
   },
-  button: {
-    alignItems: 'center',
-    width: '13%',
-    height: '4.5%',
-    borderRadius: 25,
-    backgroundColor: '#fc8a03',
-    marginBottom: '2.5%',
+  textEmail: {
+    paddingLeft:15,
+    borderWidth: 1,
+    borderColor: "#000000",
+    borderRadius: 5,
+    marginTop: 10,
+    borderWidth: 0.2,
+    height: 60,
   },
-  text2: {
-    color: '#FFF',
-    fontFamily: 'Yu Gothic UI',
-    fontStyle: 'normal',
-    lineHeight: 24,
-    fontSize: 24,
-    top: '35%',
-  },
-  text3: {
-    color: '#FFF',
-    fontStyle: 'normal',
+  txtUser: {
+    marginTop: 30,
+    position: 'absolute',
+    marginLeft: 20,
+    color: '#000000',
     fontSize: 18,
   },
+  pres: {
+    width: 248,
+    height: 60,
+    borderRadius: 28,
+    marginTop: 40,
+    backgroundColor: "#FE724C",
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: '15%',
+    marginBottom: 50,
+  },
+  txtLogin: {
+    color: 'white',
+    fontSize: 20,
+
+  },
+  contaiSi: {
+
+    position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  vien: {
+    position: 'absolute',
+    width: '100%',
+    height: 0.6,
+    backgroundColor: 'grey',
+  },
+  txtSigin: {
+    textAlign: 'center',
+    width: 120,
+    position: 'absolute',
+    color: '#383838',
+    backgroundColor: 'white',
+  },
+  contaiwith: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 30,
+  },
+  presGoo: {
+    flexDirection: 'row',
+    width: 147,
+    height: 57,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor:'white',
+    elevation:2,
+  },
+  txtgg: {
+    marginLeft: 10,
+    fontSize: 17,
+    color: '#000000'
+  },
+
 })
