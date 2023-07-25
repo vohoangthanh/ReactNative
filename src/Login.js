@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   textEmail: {
+    paddingLeft:15,
     borderWidth: 1,
     borderColor: "#000000",
     borderRadius: 5,
@@ -181,9 +182,10 @@ const styles = StyleSheet.create({
     width: 147,
     height: 57,
     borderRadius: 28,
-    backgroundColor: "#F8F8F8",
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor:'white',
+    elevation:2,
   },
   txtgg: {
     marginLeft: 10,

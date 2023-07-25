@@ -74,7 +74,7 @@ const TinTuc = (props) => {
             <Text style={{ color: 'black', fontWeight: 'bold',margin:10, width: 300, fontSize: 18 }}>
                       #1 Studio mới được ra đời tại trường
                     </Text>
-                    <Image style={{width:'95%',height:200,marginLeft:5}} source={require('../media/t5.png')} />
+                    <Image style={{width:'96%',height:200,marginLeft:5}} source={require('../media/t5.png')} />
             </View>
 
 

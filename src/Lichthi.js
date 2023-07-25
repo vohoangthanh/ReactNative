@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
         width: '33%',
         alignItems: 'center',
         flexDirection: 'row',
+        height:70,
     },
     topview1text: {
         top: -4,
