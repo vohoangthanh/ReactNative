@@ -16,18 +16,29 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import Index from './src/Index';
-import Menu from './src/Menu';
-import Login from './src/Login';
-import Lichthi from './src/Lichthi';
+
+import Menu from './src/new/Menu';
+import Login from './src/user/Login';
+import Lichthi from './src/new/Lichthi';
+import { UserContext, UserProvider } from './src/user/UserContext';
+import AppNavigation from './src/navigation/Appnavigaiton';
+import { NewProvider } from './src/new/NewContext';
+
+
 
 function App(): JSX.Element {
 
 
   return (
-    <SafeAreaView style={{flex:1}}>
-      {/* nhánh main */}
-     <Index/>
+    <SafeAreaView style={{ flex: 1 }}>
+      <UserProvider>
+        <NewProvider>
+          <AppNavigation></AppNavigation>
+        </NewProvider>
+      </UserProvider>
+
+
+
     </SafeAreaView>
   );
 }
