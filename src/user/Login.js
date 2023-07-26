@@ -1,24 +1,41 @@
 import { StyleSheet, Text, View, Image, TextInput, Pressable, Alert } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+
+import { UserContext } from './UserContext';
+
 
 const Login = (props) => {
+  const [isShowPassword, setIsShowPassword] = useState(false);
   const { navigation } = props
-  const [username, setUsername] = useState('fpoly');
+  const [email, setEmail] = useState('thanh');
   const [password, setPassword] = useState('123');
-  const handleLogin = () => {
-    if (username === 'fpoly' && password === '123') {
-      navigation.navigate('Menu')
-    } else {
-      Alert.alert('Login Failed!');
+
+  const { onLogin } = useContext(UserContext);
+
+  const handleLogin = async () => {
+    if (email.trim().length === 0) {
+      Alert.alert("Không để trống email")
+      return;
+    }
+    if (password.trim().length === 0) {
+      Alert.alert("Không để trống password")
+      return;
+
+    }
+    const resurlt = await onLogin(email, password);
+    navigation.navigate('Menu');
+    console.log('login: ', resurlt)
+    if (!resurlt) {
+      Alert.alert('Đăng nhập thất bại')
     }
   };
   return (
     <View style={styles.body}>
-      <Image style={styles.imgbacgroud} source={require('../media/goc.png')} />
-      <Image style={styles.imggoc2} source={require('../media/goc2.png')} />
-      <Image style={styles.imggoc3} source={require('../media/goc3.png')} />
+      <Image style={styles.imgbacgroud} source={require('../../media/goc.png')} />
+      <Image style={styles.imggoc2} source={require('../../media/goc2.png')} />
+      <Image style={styles.imggoc3} source={require('../../media/goc3.png')} />
       <View style={styles.contai}>
-        <Image style={styles.logo} source={require('../media/logo.png')} />
+        <Image style={styles.logo} source={require('../../media/logo.png')} />
       </View>
       <View style={styles.cotaiCS}>
         <TextInput style={styles.txtCS} > </TextInput>
@@ -28,12 +45,17 @@ const Login = (props) => {
         E-mail
       </Text>
       <View >
-        <TextInput value={username} onChangeText={setUsername} style={styles.textEmail} ></TextInput>
+        <TextInput 
+        value={email} 
+        onChangeText={setEmail} style={styles.textEmail} ></TextInput>
         
       </View>
       <Text style={styles.txtEmail}>Password</Text>
 
-      <TextInput secureTextEntry={true} value={password} onChangeText={setPassword} style={styles.textEmail} ></TextInput>
+      <TextInput 
+     value={password}
+     onChangeText={setPassword}
+    style={styles.textEmail} ></TextInput>
 
       <Pressable style={styles.pres} onPress={handleLogin}>
         <Text style={styles.txtLogin}>Login</Text>
@@ -44,12 +66,12 @@ const Login = (props) => {
         <Text style={styles.txtSigin}>Sigin up with</Text>
       </View>
       <View style={styles.contaiwith}>
-        <Pressable style={styles.presGoo} onPress={handleLogin}>
-          <Image style={styles.anh1} source={require('../media/gg.png')} />
+        <Pressable style={styles.presGoo} >
+          <Image style={styles.anh1} source={require('../../media/gg.png')} />
           <Text style={styles.txtgg}>Login</Text>
         </Pressable>
-        <Pressable style={styles.presGoo} onPress={handleLogin}>
-          <Image style={styles.anh1} source={require('../media/fb.png')} />
+        <Pressable style={styles.presGoo} >
+          <Image style={styles.anh1} source={require('../../media/fb.png')} />
 
           <Text style={styles.txtgg}>Facebook</Text>
         </Pressable>
@@ -121,7 +143,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   textEmail: {
-    paddingLeft:15,
+    paddingLeft: 15,
     borderWidth: 1,
     borderColor: "#000000",
     borderRadius: 5,
@@ -184,8 +206,8 @@ const styles = StyleSheet.create({
     borderRadius: 28,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:'white',
-    elevation:2,
+    backgroundColor: 'white',
+    elevation: 2,
   },
   txtgg: {
     marginLeft: 10,

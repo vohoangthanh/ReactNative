@@ -5,13 +5,12 @@ const TinTuc = (props) => {
     return (
         <View style={styles.container}>
             <View style={styles.logotitle}>
-                <Image style={styles.more} source={require('../media/search.png')} />
+                <Image style={styles.more} source={require('../../media/search.png')} />
                 <TextInput style={styles.textinput} placeholder='Tìm kiếm sự kiện,thông báo,..'></TextInput>
-
             </View>
 
             <View style={{ position: 'relative', margin: 10, width: '100%', borderRadius: 10, height: '28%' }}>
-                <Image style={styles.ti1} source={require('../media/title1.png')} />
+                <Image style={styles.ti1} source={require('../../yarn/../media/title1.png')} />
                 <View style={{ position: 'absolute', top: 150, left: 20 }}>
                     <Text style={{ color: '#ffffff', fontWeight: 500, fontSize: 14 }}>
                         Sự kiện mới nhất sắp tới
@@ -25,14 +24,14 @@ const TinTuc = (props) => {
             <ScrollView style={styles.scrool} horizontal={true} >
                
                     <View style={styles.itemcon} >
-                        <Image style={styles.itemcon1} source={require('../media/ti2.png')} />
+                        <Image style={styles.itemcon1} source={require('../../media/ti2.png')} />
                         <View style={{ position: 'absolute', top: 110, left: 10 }}>
                             <Text style={styles.txtlichhoc}>Lịch Thi</Text>
                             <Text style={styles.txtlichhoc2}>20+ post</Text>
                         </View>
                     </View>
                     <View style={styles.itemcon}>
-                        <Image style={styles.itemcon1} source={require('../media/t3.png')} />
+                        <Image style={styles.itemcon1} source={require('../../media/t3.png')} />
                         <View style={{ position: 'absolute', top: 110, left: 10 }}>
                             <Text style={styles.txtlichhoc}>Hội thảo</Text>
                             <Text style={styles.txtlichhoc2}>10+ post</Text>
@@ -41,15 +40,12 @@ const TinTuc = (props) => {
 
 
                     <View style={styles.itemcon} >
-                        <Image style={styles.itemcon1} source={require('../media/t4.png')} />
+                        <Image style={styles.itemcon1} source={require('../../media/t4.png')} />
                         <View style={{ position: 'absolute', top: 110, left: 10 }}>
                             <Text style={styles.txtlichhoc}>Goldenbee</Text>
                             <Text style={styles.txtlichhoc2}>40+ post</Text>
                         </View>
                     </View>
-
-               
-
 
             </ScrollView>
 
@@ -74,7 +70,7 @@ const TinTuc = (props) => {
             <Text style={{ color: 'black', fontWeight: 'bold',margin:10, width: 300, fontSize: 18 }}>
                       #1 Studio mới được ra đời tại trường
                     </Text>
-                    <Image style={{width:'96%',height:200,marginLeft:5}} source={require('../media/t5.png')} />
+                    <Image style={{width:'96%',height:200,marginLeft:5}} source={require('../../media/t5.png')} />
             </View>
 
 

@@ -1,11 +1,12 @@
 import { Pressable, StyleSheet, Text, View, FlatList, Image } from 'react-native'
-import React, { useState } from 'react'
+import React,{ useState, useEffect } from 'react'
+import { getSchedule } from './NewService'
 
 const renderItem = (value) => {
     const { item } = value
     return (
         <View style={{ alignItems: 'center', width: 40, height: 57, borderRadius: 10, marginRight: 5, }}>
-            <Text style={{ fontSize: 12, lineHeight: 18,  color: '#BCC1CD' }}>{item.day1.charAt(0)} </Text>
+            <Text style={{ fontSize: 12, lineHeight: 18,  color: '#BCC1CD' }}>{item.dayin.charAt(0)} </Text>
             <Text style={{ fontSize: 16, lineHeight: 18,  color: '#212525', marginTop: 2, }}>{item.day} </Text>
         </View>
     )
@@ -21,17 +22,19 @@ const renderItem2 = (value) => {
             <View style={styles.flat2view2}>
                 <View style={styles.flat2view6}>
                     <View style={styles.flat2view3}>
-                        <Text style={{ fontSize: 18, lineHeight: 19, color: '#212525', marginBottom: 4,}}>{item.tenmon} </Text>
-                        <Image style={styles.anh1} source={require('../media/2cham.png')} />
+                        <Text style={{ fontSize: 18, lineHeight: 19, color: '#212525', marginBottom: 4,}}>{item.name} </Text>
+                        <Text style={{ fontSize: 18, lineHeight: 19, color: '#212525', marginBottom: 4,}}>{item.subjectcode} </Text>
+                        <Image style={styles.anh1} source={require('../../media/2cham.png')} />
                     </View>
-                    <Text style={{ fontSize: 14, lineHeight: 18,  color: '#212525', marginBottom: 15,}}>{item.mamonhoc} </Text>
+                    <Text style={{ fontSize: 14, lineHeight: 18,  color: '#212525', marginBottom: 15,}}>{item.shift} </Text>
+                    <Text style={{ fontSize: 14, lineHeight: 18,  color: '#212525', marginBottom: 15,}}>{item.date} </Text>
                     <View style={styles.flat2view4}>
-                        <Image style={styles.anh2} source={require('../media/location.png')} />
-                        <Text style={{ fontSize: 14, lineHeight: 18,  color: '#212525', marginBottom: 7, marginLeft: 10,}}>{item.phong} </Text>
+                        <Image style={styles.anh2} source={require('../../media/location.png')} />
+                        <Text style={{ fontSize: 14, lineHeight: 18,  color: '#212525', marginBottom: 7, marginLeft: 10,}}>{item.adress} </Text>
                     </View>
                     <View style={styles.flat2view5}>
-                        <Image style={styles.anh2} source={require('../media/avatar.png')} />
-                        <Text style={{ fontSize: 14, lineHeight: 18,  color: '#212525', marginBottom: 6, marginLeft: 10,}}>{item.giangvien} </Text>
+                        <Image style={styles.anh2} source={require('../../media/avatar.png')} />
+                        <Text style={{ fontSize: 14, lineHeight: 18,  color: '#212525', marginBottom: 6, marginLeft: 10,}}>{item.teacher} </Text>
                     </View>
                 </View>
             </View>
@@ -40,6 +43,12 @@ const renderItem2 = (value) => {
 }
 
 const Lichthi = () => {
+    const [schedule, setSchedule] = useState([]);
+    const ongetSchedule = async () => {
+        const schedule = await getSchedule();
+        setSchedule(schedule);
+        console.log("Lichthi :48 >"+schedule);
+    }
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = () => {
         setRefreshing(true);
@@ -47,7 +56,10 @@ const Lichthi = () => {
             setRefreshing(false);
         }, 2000);
     }
-
+    useEffect(() => {
+        ongetSchedule();
+        
+    },[]);
 
     return (
         <View style={styles.body}>
@@ -65,17 +77,17 @@ const Lichthi = () => {
             </View>
             <View style={styles.mid}>
                 <View style={styles.flat1}>
-                    <FlatList data={DATAmau1} showsHorizontalScrollIndicator={false} horizontal={true} renderItem={renderItem} keyExtractor={(item, index) => item.id} />
+                    <FlatList data={schedule} showsHorizontalScrollIndicator={false} horizontal={true} renderItem={renderItem} keyExtractor={(item, index) => item._id} />
                 </View>
                 <View style={styles.midview1}>
                     <View style={styles.midview2}>
                         <Text style={styles.midview2text1}>Time</Text>
                         <Text style={styles.midview2text1}>Course</Text>
                     </View>
-                    <Image style={styles.anh2} source={require('../media/sapxep.png')} />
+                    <Image style={styles.anh2} source={require('../../media/sapxep.png')} />
                 </View>
                 <View style={styles.flat2}>
-                    <FlatList onRefresh={onRefresh} refreshing={refreshing} data={DATAmau2} showsVerticalScrollIndicator={false} renderItem={renderItem2} keyExtractor={(item, index) => item.id} />
+                    <FlatList onRefresh={onRefresh} refreshing={refreshing} data={schedule} showsVerticalScrollIndicator={false} renderItem={renderItem2} keyExtractor={(item, index) => item._id} />
                 </View>
             </View>
         </View>

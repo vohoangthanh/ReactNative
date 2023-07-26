@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TextInput, View, Image, ScrollView, onPress, Pressable } from 'react-native'
-import React from 'react'
+import React,{ useState, useEffect } from 'react'
+
 
 const Menu = (props) => {
     const { navigation } = props
@@ -9,15 +10,16 @@ const Menu = (props) => {
     const handleLogin2 = () => {
         navigation.navigate('TinTuc')
     }
+    
 
     return (
         <View style={styles.item}>
             <View style={styles.logotitle1}>
-                <Image style={styles.logo} source={require('../media/logo.png')} />
-                <Image style={styles.more1} source={require('../media/more.png')} />
+                <Image style={styles.logo} source={require('../../media/logo.png')} />
+                <Image style={styles.more1} source={require('../../media/more.png')} />
             </View>
             <View style={styles.logotitle}>
-                <Image style={styles.more} source={require('../media/search.png')} />
+                <Image style={styles.more} source={require('../../media/search.png')} />
                 <TextInput style={styles.textinput} placeholder='Chọn dịch vụ bạn cần'></TextInput>
 
             </View>
@@ -25,7 +27,7 @@ const Menu = (props) => {
             <Text style={styles.messUr}>Thông báo của bạn</Text>
             <View style={styles.title1}>
                 <View style={{ backgroundColor: '#ffffff', paddingRight: 10 }}>
-                    <Image style={styles.man} source={require('../media/man.png')} />
+                    <Image style={styles.man} source={require('../../media/man.png')} />
                 </View>
                 <View style={{ flexDirection: 'column', marginTop: 20, marginLeft: 10 }}>
                     <Text style={{ fontWeight: 700, fontSize: 16, margin: 3 }} >Lập trình Android 2</Text>
@@ -51,13 +53,13 @@ const Menu = (props) => {
                 <View style={{ flexDirection: 'column', width: 170, marginTop: 5, marginLeft: 10, backgroundColor: '#ffffff' }}>
                     <Text style={{ color: '#333333', fontWeight: 500, fontSize: 16, margin: 3 }} >Sự kiện GoldenBee</Text>
                     <Text style={{ fontWeight: 400, width: 160, fontSize: 12, margin: 3 }} >Tổ chức tại Công viên phần mềm với nhiều ca sĩ mới</Text>
-                    <Image style={{ marginLeft: 50, marginTop: 5, marginBottom: 5 }} source={require('../media/goldenbee.png')} />
+                    <Image style={{ marginLeft: 50, marginTop: 5, marginBottom: 5 }} source={require('../../media/goldenbee.png')} />
                 </View>
 
                 <View style={{ flexDirection: 'column', width: 170, marginTop: 5, marginLeft: 10, backgroundColor: '#ffffff' }}>
                     <Text style={{ color: '#333333', fontWeight: 500, fontSize: 16, margin: 3 }} >Thông báo ngày thi</Text>
                     <Text style={{ fontWeight: 400, width: 160, fontSize: 12, margin: 3 }} >Sinh viên kiểm tra lịch trên AP từ ngày mai</Text>
-                    <Image style={{ marginLeft: 50, marginTop: 5, marginBottom: 5 }} source={require('../media/lịch.png')} />
+                    <Image style={{ marginLeft: 50, marginTop: 5, marginBottom: 5 }} source={require('../../media/lịch.png')} />
                 </View>
             </View>
 
@@ -67,31 +69,31 @@ const Menu = (props) => {
             <ScrollView style={styles.scrool} horizontal={true} >
                 <View style={styles.menu}>
                     <Pressable style={styles.itemcon} onPress={handleLogin}>
-                        <Image style={styles.itemcon1} source={require('../media/lichhoc.png')} />
+                        <Image style={styles.itemcon1} source={require('../../media/lichhoc.png')} />
                         <Text style={styles.txtlichhoc}>Lịch Thi</Text>
                     </Pressable>
                     <View style={styles.itemcon}>
-                        <Image style={styles.itemcon1} source={require('../media/lichthi.png')} />
+                        <Image style={styles.itemcon1} source={require('../../media/lichthi.png')} />
                         <Text style={styles.txtlichhoc}>Lịch Học</Text>
                     </View>
                 </View>
                 <View style={styles.menu}>
                     <Pressable style={styles.itemcon} onPress={handleLogin2}>
-                        <Image style={styles.itemcon1} source={require('../media/news.png')} />
+                        <Image style={styles.itemcon1} source={require('../../media/news.png')} />
                         <Text style={styles.txtlichhoc}>Tin tức</Text>
                     </Pressable>
                     <View style={styles.itemcon}>
-                        <Image style={styles.itemcon1} source={require('../media/lichhoc.png')} />
+                        <Image style={styles.itemcon1} source={require('../../media/lichhoc.png')} />
                         <Text style={styles.txtlichhoc}>Hoá đơn</Text>
                     </View>
                 </View>
                 <View style={styles.menu}>
                     <View style={styles.itemcon}>
-                        <Image style={styles.itemcon1} source={require('../media/lichhoc.png')} />
+                        <Image style={styles.itemcon1} source={require('../../media/lichhoc.png')} />
                         <Text style={styles.txtlichhoc}>Giải đáp</Text>
                     </View>
                     <View style={styles.itemcon}>
-                        <Image style={styles.itemcon1} source={require('../media/lichhoc.png')} />
+                        <Image style={styles.itemcon1} source={require('../../media/lichhoc.png')} />
                         <Text style={styles.txtlichhoc}>Điểm</Text>
                     </View>
                 </View>
