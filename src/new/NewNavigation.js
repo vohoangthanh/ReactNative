@@ -1,4 +1,4 @@
-import { View, Text ,Image} from 'react-native'
+import { View, Text, Image } from 'react-native'
 import React from 'react'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -19,13 +19,12 @@ const Stack = createNativeStackNavigator();
 //     </Stack.Navigator>
 //   )
 // }
-const NewNavigation = () =>{
-  return(
-    <Stack.Navigator  screenOptions={{headerShown: false}} >
+const NewNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }} >
+      <Stack.Screen name='TinTuc' component={TinTuc}></Stack.Screen>
       <Stack.Screen name='Lichthi' component={Lichthi}></Stack.Screen>
       <Stack.Screen name='Menu' component={Menu}></Stack.Screen>
-      <Stack.Screen name='TinTuc' component={TinTuc}></Stack.Screen>
-      
     </Stack.Navigator>
   )
 }
