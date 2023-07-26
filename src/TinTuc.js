@@ -25,40 +25,64 @@ const TinTuc = (props) => {
                 horizontal={true}>
                 <View style={{ flexDirection: 'column', width: 500, height: 140 }}>
                     <View style={{ flexDirection: 'row', height: 80, width: 100 }}>
-                      <View style={styles.iconmenu}>
+                     <View style={{flexDirection:'column'}}>
+                     <View style={styles.iconmenu}>
                       <Image style={styles.more} source={require('../media/heart.png')} />
-                      <Text>Text</Text>
-                        </View>  
-                        <View style={styles.iconmenu}>
-                      <Image style={styles.more} source={require('../media/heart.png')} />
-                      <Text>Text</Text>
+                      
                         </View>
-                        <View style={styles.iconmenu}>
+                        <Text style={{textAlign:'center',width:60,backgroundColor:'yellow',marginHorizontal:15}}>Text</Text> 
+                     </View>
+                     <View style={{flexDirection:'column'}}>
+                     <View style={styles.iconmenu}>
                       <Image style={styles.more} source={require('../media/heart.png')} />
-                      <Text>Text</Text>
+                      
                         </View>
-                        <View style={styles.iconmenu}>
+                        <Text style={{textAlign:'center',width:60,backgroundColor:'yellow',marginHorizontal:15}}>Text</Text> 
+                     </View>
+                     <View style={{flexDirection:'column'}}>
+                     <View style={styles.iconmenu}>
                       <Image style={styles.more} source={require('../media/heart.png')} />
-                      <Text>Text</Text>
+                      
                         </View>
+                        <Text style={{textAlign:'center',width:60,backgroundColor:'yellow',marginHorizontal:15}}>Text</Text> 
+                     </View>
+                     <View style={{flexDirection:'column'}}>
+                     <View style={styles.iconmenu}>
+                      <Image style={styles.more} source={require('../media/heart.png')} />
+                      
+                        </View>
+                        <Text style={{textAlign:'center',width:60,backgroundColor:'yellow',marginHorizontal:15}}>Text</Text> 
+                     </View>
                     </View>
                     <View style={{ flexDirection: 'row', height: 80, width: 100 }}>
-                      <View style={styles.iconmenu}>
+                    <View style={{flexDirection:'column'}}>
+                     <View style={styles.iconmenu}>
                       <Image style={styles.more} source={require('../media/heart.png')} />
-                      <Text>Text</Text>
-                        </View>  
-                        <View style={styles.iconmenu}>
-                      <Image style={styles.more} source={require('../media/heart.png')} />
-                      <Text>Text</Text>
+                      
                         </View>
-                        <View style={styles.iconmenu}>
+                        <Text style={{textAlign:'center',width:60,backgroundColor:'yellow',marginHorizontal:15}}>Text</Text> 
+                     </View>
+                     <View style={{flexDirection:'column'}}>
+                     <View style={styles.iconmenu}>
                       <Image style={styles.more} source={require('../media/heart.png')} />
-                      <Text>Text</Text>
+                      
                         </View>
-                        <View style={styles.iconmenu}>
+                        <Text style={{textAlign:'center',width:60,backgroundColor:'yellow',marginHorizontal:15}}>Text</Text> 
+                     </View>
+                     <View style={{flexDirection:'column'}}>
+                     <View style={styles.iconmenu}>
                       <Image style={styles.more} source={require('../media/heart.png')} />
-                      <Text>Text</Text>
+                      
                         </View>
+                        <Text style={{textAlign:'center',width:60,backgroundColor:'yellow',marginHorizontal:15}}>Text</Text> 
+                     </View>
+                     <View style={{flexDirection:'column'}}>
+                     <View style={styles.iconmenu}>
+                      <Image style={styles.more} source={require('../media/heart.png')} />
+                      
+                        </View>
+                        <Text style={{textAlign:'center',width:60,backgroundColor:'yellow',marginHorizontal:15}}>Text</Text> 
+                     </View>
                     </View>
                     <View style={{ flexDirection: 'row', height: 100, width: 100 }}>
 
@@ -86,9 +110,9 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent:'center',
         alignItems:'center',
-        width: 70, height: 70,
+        width: 56, height: 56,
         backgroundColor:'#f1f2f2',
-         borderRadius: 35,
+         borderRadius: 28,
         shadowColor: 'white',
       
         elevation: 2,
