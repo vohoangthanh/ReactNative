@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Lichthi from './Lichthi';
 import Menu from './Menu';
 import TinTuc from './TinTuc';
+import Feedback from './Feedback';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -22,9 +23,11 @@ const Stack = createNativeStackNavigator();
 const NewNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }} >
-      <Stack.Screen name='TinTuc' component={TinTuc}></Stack.Screen>
-      <Stack.Screen name='Lichthi' component={Lichthi}></Stack.Screen>
       <Stack.Screen name='Menu' component={Menu}></Stack.Screen>
+      <Stack.Screen name='Lichthi' component={Lichthi}></Stack.Screen>
+      <Stack.Screen name='Feedback' component={Feedback}></Stack.Screen>
+      <Stack.Screen name='TinTuc' component={TinTuc}></Stack.Screen>
+      
     </Stack.Navigator>
   )
 }

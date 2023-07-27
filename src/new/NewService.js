@@ -11,3 +11,9 @@ export const getSchedule = async () => {
     console.log("11 Subject resspone: " + respone);
     return respone.data;
 }
+
+export const addFeedback = async (data) => {
+    const response = await AxiosInstance().post('/feedback/add', data);
+    console.log("17 Subject resspone: " + response);
+    return response.data;
+}
