@@ -36,9 +36,6 @@ function App(): JSX.Element {
           <AppNavigation></AppNavigation>
         </NewProvider>
       </UserProvider>
-
-
-
     </SafeAreaView>
   );
 }
