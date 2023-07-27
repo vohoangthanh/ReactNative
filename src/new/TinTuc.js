@@ -74,12 +74,12 @@ const TinTuc = (props) => {
             <Image style={{ width: '96%', height: 200, marginLeft: 5 }} source={require('../../media/t5.png')} />
 
 
-            <Image style={{ marginLeft: 60 }} source={require('../media/notice.png')} />
-            <Image style={{ marginLeft: 30 }} source={require('../media/account.png')} />
+            <Image style={{ marginLeft: 60 }} source={require('../../media/notice.png')} />
+            <Image style={{ marginLeft: 30 }} source={require('../../media/account.png')} />
 
 
             <View style={{ margin: 10, width: '100%', borderRadius: 10, height: '28%' }}>
-                <Image style={styles.ti1} source={require('../media/bantinsv.jpg')} />
+                <Image style={styles.ti1} source={require('../../media/bantinsv.jpg')} />
 
             </View>
 
@@ -94,28 +94,28 @@ const TinTuc = (props) => {
                     <View style={{ flexDirection: 'row', height: 80, width: 100 }}>
                         <View style={{ flexDirection: 'column' }}>
                             <View style={styles.iconmenu}>
-                                <Image style={styles.more} source={require('../media/heart.png')} />
+                                <Image style={styles.more} source={require('../../media/heart.png')} />
 
                             </View>
                             <Text style={{ textAlign: 'center', width: 60, backgroundColor: 'yellow', marginHorizontal: 15 }}>Text</Text>
                         </View>
                         <View style={{ flexDirection: 'column' }}>
                             <View style={styles.iconmenu}>
-                                <Image style={styles.more} source={require('../media/heart.png')} />
+                                <Image style={styles.more} source={require('../../media/heart.png')} />
 
                             </View>
                             <Text style={{ textAlign: 'center', width: 60, backgroundColor: 'yellow', marginHorizontal: 15 }}>Text</Text>
                         </View>
                         <View style={{ flexDirection: 'column' }}>
                             <View style={styles.iconmenu}>
-                                <Image style={styles.more} source={require('../media/heart.png')} />
+                                <Image style={styles.more} source={require('../../media/heart.png')} />
 
                             </View>
                             <Text style={{ textAlign: 'center', width: 60, backgroundColor: 'yellow', marginHorizontal: 15 }}>Text</Text>
                         </View>
                         <View style={{ flexDirection: 'column' }}>
                             <View style={styles.iconmenu}>
-                                <Image style={styles.more} source={require('../media/heart.png')} />
+                                <Image style={styles.more} source={require('../../media/heart.png')} />
 
                             </View>
                             <Text style={{ textAlign: 'center', width: 60, backgroundColor: 'yellow', marginHorizontal: 15 }}>Text</Text>
@@ -124,28 +124,28 @@ const TinTuc = (props) => {
                     <View style={{ flexDirection: 'row', height: 80, width: 100 }}>
                         <View style={{ flexDirection: 'column' }}>
                             <View style={styles.iconmenu}>
-                                <Image style={styles.more} source={require('../media/heart.png')} />
+                                <Image style={styles.more} source={require('../../media/heart.png')} />
 
                             </View>
                             <Text style={{ textAlign: 'center', width: 60, backgroundColor: 'yellow', marginHorizontal: 15 }}>Text</Text>
                         </View>
                         <View style={{ flexDirection: 'column' }}>
                             <View style={styles.iconmenu}>
-                                <Image style={styles.more} source={require('../media/heart.png')} />
+                                <Image style={styles.more} source={require('../../media/heart.png')} />
 
                             </View>
                             <Text style={{ textAlign: 'center', width: 60, backgroundColor: 'yellow', marginHorizontal: 15 }}>Text</Text>
                         </View>
                         <View style={{ flexDirection: 'column' }}>
                             <View style={styles.iconmenu}>
-                                <Image style={styles.more} source={require('../media/heart.png')} />
+                                <Image style={styles.more} source={require('../../media/heart.png')} />
 
                             </View>
                             <Text style={{ textAlign: 'center', width: 60, backgroundColor: 'yellow', marginHorizontal: 15 }}>Text</Text>
                         </View>
                         <View style={{ flexDirection: 'column' }}>
                             <View style={styles.iconmenu}>
-                                <Image style={styles.more} source={require('../media/heart.png')} />
+                                <Image style={styles.more} source={require('../../media/heart.png')} />
 
                             </View>
                             <Text style={{ textAlign: 'center', width: 60, backgroundColor: 'yellow', marginHorizontal: 15 }}>Text</Text>
@@ -161,7 +161,7 @@ const TinTuc = (props) => {
             <Text style={{ color: 'black', fontWeight: 'bold', margin: 10, width: 300, fontSize: 18 }}>
                 #1 Studio mới được ra đời tại trường
             </Text>
-            <Image style={{ width: '96%', height: 200, marginLeft: 5 }} source={require('../media/t5.png')} />
+            <Image style={{ width: '96%', height: 200, marginLeft: 5 }} source={require('../../media/t5.png')} />
         </View>
 
 
