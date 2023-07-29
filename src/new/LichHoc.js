@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, View, FlatList, Image, TouchableOpacity, P
 import React, { useState, useEffect } from 'react'
 import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { getTest } from './NewService'
+import { getSchedule } from './NewService'
 
 const months = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -11,12 +11,12 @@ const months = [
 const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 
-const Lichthi = () => {
-    const [test, settest] = useState([]);
-    const ongetTest = async () => {
-        const test = await getTest();
-        settest(test);
-      //  console.log("Lichthi :48 >"+test);
+const LichHoc = () => {
+    const [schedule, setSchedule] = useState([]);
+    const ongetSchedule = async () => {
+        const schedule = await getSchedule();
+        setSchedule(schedule);
+        //  console.log("Lichthi :48 >"+schedule);
     }
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = () => {
@@ -26,9 +26,9 @@ const Lichthi = () => {
         }, 2000);
     }
     useEffect(() => {
-        ongetTest();
-        
-    },[]);
+        ongetSchedule();
+
+    }, []);
 
     const [selectedItem, setSelectedItem] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
@@ -77,8 +77,8 @@ const Lichthi = () => {
 
         return (
             <View style={[styles.itemdate, isItemSelected && styles.selectedItem]}>
-                <Text style={{ fontSize: 12, lineHeight: 18,  color: '#BCC1CD' }}>{item.day1.charAt(0)} </Text>
-                <Text style={{ fontSize: 16, lineHeight: 18,  color: '#212525', marginTop: 2, }}>{item.day}</Text>
+                <Text style={{ fontSize: 12, lineHeight: 18, color: '#BCC1CD' }}>{item.day1.charAt(0)} </Text>
+                <Text style={{ fontSize: 16, lineHeight: 18, color: '#212525', marginTop: 2, }}>{item.day} </Text>
             </View>
         )
     }
@@ -92,7 +92,7 @@ const Lichthi = () => {
             <View style={[styles.flat2view1, isPastTime && styles.pastItem]}>
                 <View>
                     <Text style={{ fontSize: 16, lineHeight: 18, color: '#212525', marginBottom: 6, }}>{item.timestart} </Text>
-                    <Text style={{ fontSize: 16, lineHeight: 18,  color: '#BCC1CD' }}>{item.timeend} </Text>
+                    <Text style={{ fontSize: 16, lineHeight: 18, color: '#BCC1CD' }}>{item.timeend} </Text>
                 </View>
                 <View style={styles.flat2view2}>
                     <View style={styles.flat2view6}>
@@ -100,19 +100,22 @@ const Lichthi = () => {
                             <Text style={{ fontSize: 18, lineHeight: 19, fontWeight: 600, color: '#212525', marginBottom: 4, }}>Mã Môn: {item.subjectcode} </Text>
                             <Image style={styles.anh1} source={require('../../media/2cham.png')} />
                         </View>
-                        <Text style={{ fontSize: 14, lineHeight: 18, color: '#212525', marginBottom: 15, }}>Ca Thi: {item.shift} </Text>
-                        <Text style={{ fontSize: 14, lineHeight: 18,  color: '#212525', marginBottom: 15,}}>Ngày thi: {item.date} </Text>
+                        <Text style={{ fontSize: 14, lineHeight: 18, color: '#212525', marginBottom: 15, }}>Ca Học: {item.shift} </Text>
+                        <Text style={{ fontSize: 14, lineHeight: 18, color: '#212525', marginBottom: 15, }}>Ngày: {item.date} </Text>
                         <View style={styles.flat2view4}>
                             <Image style={styles.anh2} source={require('../../media/location.png')} />
-                            <Text style={{ fontSize: 14, lineHeight: 18, color: '#212525', marginBottom: 7, marginLeft: 10, }}>Phòng thi: {item.adress} </Text>
+                            <Text style={{ fontSize: 14, lineHeight: 18, color: '#212525', marginBottom: 7, marginLeft: 10, }}>Phòng: {item.adress} </Text>
                         </View>
-    
+                        <View style={styles.flat2view5}>
+                            <Image style={styles.anh2} source={require('../../media/avatar.png')} />
+                            <Text style={{ fontSize: 14, lineHeight: 18, color: '#212525', marginBottom: 6, marginLeft: 10, }}>Giảng Viên: {item.teacher} </Text>
+                        </View>
                     </View>
                 </View>
             </View>
         )
     }
-    
+
 
 
     return (
@@ -151,14 +154,14 @@ const Lichthi = () => {
                     <Image style={styles.anh2} source={require('../../media/sapxep.png')} />
                 </View>
                 <View style={styles.flat2}>
-                    <FlatList onRefresh={onRefresh} refreshing={refreshing} data={test} showsVerticalScrollIndicator={false} renderItem={renderItem2} keyExtractor={(item, index) => item._id} />
+                    <FlatList onRefresh={onRefresh} refreshing={refreshing} data={schedule} showsVerticalScrollIndicator={false} renderItem={renderItem2} keyExtractor={(item, index) => item._id} />
                 </View>
             </View>
         </View >
     )
 }
 
-export default Lichthi
+export default LichHoc
 
 const styles = StyleSheet.create({
     body: {
@@ -224,7 +227,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Yu Gothic UI',
         fontStyle: 'normal',
         fontSize: 16,
-    
+
     },
     flat1: {
         height: '11%',
@@ -236,7 +239,7 @@ const styles = StyleSheet.create({
 
     flat2view1: {
         marginBottom: 16,
-        height: 120,
+        height: 155,
         flexDirection: 'row',
     },
     flat2view2: {
@@ -248,6 +251,7 @@ const styles = StyleSheet.create({
     flat2view3: {
         justifyContent: 'space-between',
         flexDirection: 'row',
+        
     },
     flat2view4: {
         flexDirection: 'row',
@@ -286,7 +290,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
     },
     selectedItem: {
-        backgroundColor: 'red',
+        backgroundColor: 'black',
     },
     pastItem: {
         opacity: 0.3,

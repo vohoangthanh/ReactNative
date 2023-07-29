@@ -23,6 +23,8 @@ import Lichthi from './src/new/Lichthi';
 import { UserContext, UserProvider } from './src/user/UserContext';
 import AppNavigation from './src/navigation/Appnavigaiton';
 import { NewProvider } from './src/new/NewContext';
+import Lichhoc from './src/new/LichHoc';
+import Test from './src/new/Test';
 
 
 
@@ -31,11 +33,13 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <UserProvider>
+      {/* <UserProvider>
         <NewProvider>
           <AppNavigation></AppNavigation>
         </NewProvider>
-      </UserProvider>
+      </UserProvider> */}
+    <Test></Test>
+     
       </SafeAreaView>
   );
 }
