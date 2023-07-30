@@ -24,7 +24,7 @@ const Login = (props) => {
     }
     const resurlt = await onLogin(email, password);
     navigation.navigate('Menu');
-    console.log('login: ', resurlt)
+    // console.log('login: ', resurlt)
     if (!resurlt) {
       Alert.alert('Đăng nhập thất bại')
     }
@@ -45,17 +45,17 @@ const Login = (props) => {
         E-mail
       </Text>
       <View >
-        <TextInput 
-        value={email} 
-        onChangeText={setEmail} style={styles.textEmail} ></TextInput>
-        
+        <TextInput
+          value={email}
+          onChangeText={setEmail} style={styles.textEmail} ></TextInput>
+
       </View>
       <Text style={styles.txtEmail}>Password</Text>
 
-      <TextInput 
-     value={password}
-     onChangeText={setPassword}
-    style={styles.textEmail} ></TextInput>
+      <TextInput
+        value={password}
+        onChangeText={setPassword}
+        style={styles.textEmail} ></TextInput>
 
       <Pressable style={styles.pres} onPress={handleLogin}>
         <Text style={styles.txtLogin}>Login</Text>

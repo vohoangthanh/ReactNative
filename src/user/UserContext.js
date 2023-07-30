@@ -1,22 +1,22 @@
-import { createContext,useState } from "react";
+import { createContext, useState } from "react";
 import { login } from "./UserService";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const UserContext = createContext();
 
 export const UserProvider = props => {
-  const {children} = props;
+  const { children } = props;
 
   const [user, setUser] = useState(null);
 
   const onLogin = async (email, password) => {
     try {
       const result = await login(email, password);
-      console.log('login result', result);
+   //   console.log('login result', result);
       if (result.status == 1) {
         //  console.log('aaaaaaaOK', result.statusCode);
         setUser(result);
-        console.log('aaaaaaaOK', result);
+        //    console.log('aaaaaaaOK', result);
         //   await AsyncStorage.setItem('token', result.data.token);
         return true;
       }
@@ -28,7 +28,7 @@ export const UserProvider = props => {
   };
 
   return (
-    <UserContext.Provider value={{user, setUser, onLogin}}>
+    <UserContext.Provider value={{ user, setUser, onLogin }}>
       {children}
     </UserContext.Provider>
   );

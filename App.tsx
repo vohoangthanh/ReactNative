@@ -33,12 +33,12 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      {/* <UserProvider>
+      <UserProvider>
         <NewProvider>
           <AppNavigation></AppNavigation>
         </NewProvider>
-      </UserProvider> */}
-    <Test></Test>
+      </UserProvider>
+    {/* <Test></Test> */}
      
       </SafeAreaView>
   );

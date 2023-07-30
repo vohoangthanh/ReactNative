@@ -71,14 +71,16 @@ const Lichthi = () => {
         setMode(currentMode);
     }
 
+
+
     const renderItem = (value) => {
         const { item } = value
-        const isItemSelected = item._id === selectedDate;
+        const isItemSelected = item.id === selectedDate;
 
         return (
             <View style={[styles.itemdate, isItemSelected && styles.selectedItem]}>
                 <Text style={{ fontSize: 12, lineHeight: 18,  color: '#BCC1CD' }}>{item.day1.charAt(0)} </Text>
-                <Text style={{ fontSize: 16, lineHeight: 18,  color: '#212525', marginTop: 2, }}>{item.day}</Text>
+                <Text style={{ fontSize: 16, lineHeight: 18,  color: '#4DC591', marginTop: 2, }}>{item.day}</Text>
             </View>
         )
     }
@@ -286,7 +288,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
     },
     selectedItem: {
-        backgroundColor: 'red',
+        backgroundColor: '#e9f5ef',
     },
     pastItem: {
         opacity: 0.3,
@@ -296,39 +298,39 @@ const styles = StyleSheet.create({
 var DATAmau1 = [
     {
         "id": 1,
-        "day": "1",
+        "day": "01",
         "day1": "Friday"
     }, {
         "id": 2,
-        "day": "2",
+        "day": "02",
         "day1": "Saturday"
     }, {
         "id": 3,
-        "day": "3",
+        "day": "03",
         "day1": "Sunday"
     }, {
         "id": 4,
-        "day": "4",
+        "day": "04",
         "day1": "Monday"
     }, {
         "id": 5,
-        "day": "5",
+        "day": "05",
         "day1": "Tuesday"
     }, {
         "id": 6,
-        "day": "6",
+        "day": "06",
         "day1": "Wednesday"
     }, {
         "id": 7,
-        "day": "7",
+        "day": "07",
         "day1": "Thursday"
     }, {
         "id": 8,
-        "day": "8",
+        "day": "08",
         "day1": "Friday"
     }, {
         "id": 9,
-        "day": "9",
+        "day": "09",
         "day1": "Saturday"
     }, {
         "id": 10,
