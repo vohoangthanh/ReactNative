@@ -116,7 +116,7 @@ const LichHoc = () => {
         )
     }
 
-
+// fix lòi mắt
 
     return (
         <View style={styles.body}>
