@@ -1,8 +1,7 @@
 import { Pressable, StyleSheet, Text, View, FlatList, Image, TouchableOpacity, Platform } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import moment from 'moment';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { getTest } from './NewService'
 
 const months = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -11,13 +10,7 @@ const months = [
 const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 
-const Lichthi = () => {
-    const [test, settest] = useState([]);
-    const ongetTest = async () => {
-        const test = await getTest();
-        settest(test);
-      //  console.log("Lichthi :48 >"+test);
-    }
+const Test = () => {
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = () => {
         setRefreshing(true);
@@ -25,10 +18,7 @@ const Lichthi = () => {
             setRefreshing(false);
         }, 2000);
     }
-    useEffect(() => {
-        ongetTest();
-        
-    },[]);
+
 
     const [selectedItem, setSelectedItem] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
@@ -38,7 +28,7 @@ const Lichthi = () => {
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
     const [dayreal, setDayreal] = useState('Today');
-    const [day1, setDay] = useState(moment().format('DD'));
+    const [day1, setDay] = useState('Empty');
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
 
@@ -66,21 +56,24 @@ const Lichthi = () => {
 
 
     }
+    // const itemClickHandler = (item) => {
+
+    //       setDate(new Date(item.id));
+    //   };
     const showMode = (currentMode) => {
         setShow(true);
         setMode(currentMode);
     }
 
-
-
     const renderItem = (value) => {
         const { item } = value
         const isItemSelected = item.id === selectedDate;
+        // const isSelected = selectedItem === item.id;
 
         return (
             <View style={[styles.itemdate, isItemSelected && styles.selectedItem]}>
-                <Text style={{ fontSize: 12, lineHeight: 18,  color: '#BCC1CD' }}>{item.day1.charAt(0)} </Text>
-                <Text style={{ fontSize: 16, lineHeight: 18,  color: '#4DC591', marginTop: 2, }}>{item.day}</Text>
+                <Text style={{ fontSize: 12, lineHeight: 18, color: '#BCC1CD' }}>{item.day1.charAt(0)} </Text>
+                <Text style={{ fontSize: 16, lineHeight: 18,  color: '#212525', marginTop: 2, }}>{item.day} </Text>
             </View>
         )
     }
@@ -89,32 +82,33 @@ const Lichthi = () => {
         const currentTime = moment();
         const itemTime = moment(item.timeend, 'HH:mm');
 
-        const isPastTime = itemTime.isBefore(currentTime.startOf('minute'));
+        const isPastTime = itemTime.isBefore(currentTime, 'hour');
         return (
             <View style={[styles.flat2view1, isPastTime && styles.pastItem]}>
                 <View>
-                    <Text style={{ fontSize: 16, lineHeight: 18, color: '#212525', marginBottom: 6, }}>{item.timestart} </Text>
+                    <Text style={{ fontSize: 16, lineHeight: 18,  color: '#212525', marginBottom: 6, }}>{item.timestart} </Text>
                     <Text style={{ fontSize: 16, lineHeight: 18,  color: '#BCC1CD' }}>{item.timeend} </Text>
                 </View>
                 <View style={styles.flat2view2}>
                     <View style={styles.flat2view6}>
                         <View style={styles.flat2view3}>
-                            <Text style={{ fontSize: 18, lineHeight: 19, fontWeight: 600, color: '#212525', marginBottom: 4, }}>Mã Môn: {item.subjectcode} </Text>
+                            <Text style={{ fontSize: 18, lineHeight: 19,  color: '#212525', marginBottom: 4, }}>{item.tenmon} </Text>
                             <Image style={styles.anh1} source={require('../../media/2cham.png')} />
                         </View>
-                        <Text style={{ fontSize: 14, lineHeight: 18, color: '#212525', marginBottom: 15, }}>Ca Thi: {item.shift} </Text>
-                        <Text style={{ fontSize: 14, lineHeight: 18,  color: '#212525', marginBottom: 15,}}>Ngày thi: {item.date} </Text>
+                        <Text style={{ fontSize: 14, lineHeight: 18,  color: '#212525', marginBottom: 15, }}>{item.mamonhoc} </Text>
                         <View style={styles.flat2view4}>
                             <Image style={styles.anh2} source={require('../../media/location.png')} />
-                            <Text style={{ fontSize: 14, lineHeight: 18, color: '#212525', marginBottom: 7, marginLeft: 10, }}>Phòng thi: {item.adress} </Text>
+                            <Text style={{ fontSize: 14, lineHeight: 18,  color: '#212525', marginBottom: 7, marginLeft: 10, }}>{item.phong} </Text>
                         </View>
-    
+                        <View style={styles.flat2view5}>
+                            <Image style={styles.anh2} source={require('../../media/avatar.png')} />
+                            <Text style={{ fontSize: 14, lineHeight: 18, color: '#212525', marginBottom: 6, marginLeft: 10, }}>{item.giangvien} </Text>
+                        </View>
                     </View>
                 </View>
             </View>
         )
     }
-    
 
 
     return (
@@ -123,7 +117,7 @@ const Lichthi = () => {
                 <TouchableOpacity onPress={() => showMode('date')}>
                     <View style={styles.topview1}>
                         <Text style={styles.topview1text}>{day1}</Text>
-                        <View>
+                        <View style={styles.topview2}>
                             <Text style={styles.topview2text2}>{month} {year}</Text>
                         </View>
                     </View>
@@ -153,14 +147,14 @@ const Lichthi = () => {
                     <Image style={styles.anh2} source={require('../../media/sapxep.png')} />
                 </View>
                 <View style={styles.flat2}>
-                    <FlatList onRefresh={onRefresh} refreshing={refreshing} data={test} showsVerticalScrollIndicator={false} renderItem={renderItem2} keyExtractor={(item, index) => item._id} />
+                    <FlatList onRefresh={onRefresh} refreshing={refreshing} data={DATAmau2} showsVerticalScrollIndicator={false} renderItem={renderItem2} keyExtractor={(item, index) => item.id} />
                 </View>
             </View>
         </View >
     )
 }
 
-export default Lichthi
+export default Test
 
 const styles = StyleSheet.create({
     body: {
@@ -226,7 +220,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Yu Gothic UI',
         fontStyle: 'normal',
         fontSize: 16,
-    
+ 
     },
     flat1: {
         height: '11%',
@@ -238,7 +232,7 @@ const styles = StyleSheet.create({
 
     flat2view1: {
         marginBottom: 16,
-        height: 120,
+        height: 137,
         flexDirection: 'row',
     },
     flat2view2: {
@@ -259,7 +253,7 @@ const styles = StyleSheet.create({
     },
     flat2view6: {
         marginLeft: 16,
-        marginTop: 5,
+        marginTop: 16,
     },
     anh1: {
         marginRight: 8,
@@ -278,6 +272,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Yu Gothic UI',
         fontStyle: 'normal',
         fontSize: 16,
+
     },
     itemdate: {
         alignItems: 'center',
@@ -285,136 +280,294 @@ const styles = StyleSheet.create({
         height: 57,
         borderRadius: 10,
         marginRight: 5,
-        backgroundColor: '#FFFFFF',
     },
     selectedItem: {
-        backgroundColor: '#e9f5ef',
+        backgroundColor: 'red',
     },
     pastItem: {
         opacity: 0.3,
     },
 })
 
-var DATAmau1 = [
-    {
-        "id": 1,
-        "day": "01",
-        "day1": "Friday"
-    }, {
-        "id": 2,
-        "day": "02",
-        "day1": "Saturday"
-    }, {
-        "id": 3,
-        "day": "03",
-        "day1": "Sunday"
-    }, {
-        "id": 4,
-        "day": "04",
-        "day1": "Monday"
-    }, {
-        "id": 5,
-        "day": "05",
-        "day1": "Tuesday"
-    }, {
-        "id": 6,
-        "day": "06",
-        "day1": "Wednesday"
-    }, {
-        "id": 7,
-        "day": "07",
-        "day1": "Thursday"
-    }, {
-        "id": 8,
-        "day": "08",
-        "day1": "Friday"
-    }, {
-        "id": 9,
-        "day": "09",
-        "day1": "Saturday"
-    }, {
-        "id": 10,
-        "day": "10",
-        "day1": "Sunday"
-    }, {
-        "id": 11,
-        "day": "11",
-        "day1": "Monday"
-    },
-    {
-        "id": 12,
-        "day": "12",
-        "day1": "Friday"
-    }, {
-        "id": 13,
-        "day": "13",
-        "day1": "Saturday"
-    }, {
-        "id": 14,
-        "day": "14",
-        "day1": "Sunday"
-    }, {
-        "id": 15,
-        "day": "15",
-        "day1": "Monday"
-    }, {
-        "id": 16,
-        "day": "16",
-        "day1": "Tuesday"
-    }, {
-        "id": 17,
-        "day": "17",
-        "day1": "Wednesday"
-    }, {
-        "id": 18,
-        "day": "18",
-        "day1": "Thursday"
-    }, {
-        "id": 19,
-        "day": "19",
-        "day1": "Friday"
-    }, {
-        "id": 20,
-        "day": "20",
-        "day1": "Saturday"
-    }, {
-        "id": 21,
-        "day": "21",
-        "day1": "Sunday"
-    }, {
-        "id": 22,
-        "day": "22",
-        "day1": "Monday"
-    }, {
-        "id": 23,
-        "day": "23",
-        "day1": "Tuesday"
-    }, {
-        "id": 24,
-        "day": "24",
-        "day1": "Wednesday"
-    }, {
-        "id": 25,
-        "day": "25",
-        "day1": "Friday"
-    }, {
-        "id": 26,
-        "day": "26",
-        "day1": "Saturday"
-    }, {
-        "id": 27,
-        "day": "27",
-        "day1": "Sunday"
-    }, {
-        "id": 28,
-        "day": "28",
-        "day1": "Monday"
-    }, {
-        "id": 29,
-        "day": "29",
-        "day1": "Tuesday"
-    }, {
-        "id": 30,
-        "day": "30",
-        "day1": "Wednesday"
-    }]
+var DATAmau1 = [{
+    "id": 1,
+    "day": "01",
+    "day1": "Monday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 2,
+    "day": "02",
+    "day1": "Tuesday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 3,
+    "day": "03",
+    "day1": "Wednesday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 4,
+    "day": "04",
+    "day1": "Thursday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 5,
+    "day": "05",
+    "day1": "Friday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 6,
+    "day": "06",
+    "day1": "Saturday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 7,
+    "day": "07",
+    "day1": "Sunday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 8,
+    "day": "08",
+    "day1": "Monday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 9,
+    "day": "09",
+    "day1": "Tuesday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 10,
+    "day": "10",
+    "day1": "Wednesday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 11,
+    "day": "11",
+    "day1": "Thursday"
+}, {
+    "id": 12,
+    "day": "12",
+    "day1": "Friday"
+}, {
+    "id": 13,
+    "day": "13",
+    "day1": "Saturday"
+}, {
+    "id": 14,
+    "day": "14",
+    "day1": "Sunday"
+}, {
+    "id": 15,
+    "day": "15",
+    "day1": "Monday"
+}, {
+    "id": 16,
+    "day": "16",
+    "day1": "Tuesday"
+}, {
+    "id": 17,
+    "day": "17",
+    "day1": "Wednesday"
+}, {
+    "id": 18,
+    "day": "18",
+    "day1": "Thursday"
+}, {
+    "id": 19,
+    "day": "19",
+    "day1": "Friday"
+}, {
+    "id": 20,
+    "day": "20",
+    "day1": "Saturday"
+}, {
+    "id": 21,
+    "day": "21",
+    "day1": "Sunday"
+}, {
+    "id": 22,
+    "day": "22",
+    "day1": "Monday"
+}, {
+    "id": 23,
+    "day": "23",
+    "day1": "Tuesday"
+}, {
+    "id": 24,
+    "day": "24",
+    "day1": "Wednesday"
+}, {
+    "id": 25,
+    "day": "25",
+    "day1": "Friday"
+}, {
+    "id": 26,
+    "day": "26",
+    "day1": "Saturday"
+}, {
+    "id": 27,
+    "day": "27",
+    "day1": "Sunday"
+}, {
+    "id": 28,
+    "day": "28",
+    "day1": "Monday"
+}, {
+    "id": 29,
+    "day": "29",
+    "day1": "Tuesday"
+}, {
+    "id": 30,
+    "day": "30",
+    "day1": "Wednesday"
+}]
+var DATAmau2 = [{
+    "id": 1,
+    "day": "01",
+    "day1": "Monday",
+    "timestart": "17:30",
+    "timeend": "18:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 2,
+    "day": "02",
+    "day1": "Tuesday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 3,
+    "day": "03",
+    "day1": "Wednesday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 4,
+    "day": "04",
+    "day1": "Thursday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 5,
+    "day": "05",
+    "day1": "Friday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 6,
+    "day": "06",
+    "day1": "Saturday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 7,
+    "day": "07",
+    "day1": "Sunday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 8,
+    "day": "08",
+    "day1": "Monday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 9,
+    "day": "09",
+    "day1": "Tuesday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}, {
+    "id": 10,
+    "day": "10",
+    "day1": "Wednesday",
+    "timestart": "07:30",
+    "timeend": "09:30",
+    "tenmon": "Android Đa nền tảng",
+    "mamonhoc": "MOD306",
+    "phong": "T101",
+    "giangvien": "DinhNT",
+}]
